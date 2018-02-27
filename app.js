@@ -9,7 +9,7 @@ const LocalStrategy = require("passport-local").Strategy;
 const User = require("./models/user");
 const bcrypt = require("bcrypt");
 // config express layouts / mongoose
-const expressLayouts = require("express-ejs-layouts");
+// const expressLayouts = require("express-ejs-layouts");
 const mongoose = require("mongoose");
 // config authentication / authorization
 const passport = require("passport");
@@ -27,9 +27,9 @@ const app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-// express layouts
-app.set("layout", "landing-page");
-app.use(expressLayouts);
+// // express layouts
+// app.set('layout', 'landing-page');
+// app.use(expressLayouts);
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -128,6 +128,8 @@ app.use( (req, res, next) => {
   }
   next();
 });
+// HERE YOU CAN HIDE LOGIN AND CREATE BUTTONS / LOGOUT BUTTONS
+// DO THIS WHENEVER THIS SHIT WORKS
 
 
 // ==================================== END OF PASSPORT CONFIGURATION ======================================== //

@@ -1,6 +1,11 @@
 const express = require("express");
 const authRoutes = express.Router();
 
+// require user model
+const User = require("../models/user");
+
+
+
 // login form display
 authRoutes.get('/login', (req, res, next) => {
   res.render('authentication/login');

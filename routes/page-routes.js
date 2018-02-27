@@ -2,12 +2,16 @@ const express = require("express");
 const pageRoutes = express.Router();
 
 
-// user dashboard route - after login
-pageRoutes.get('/login', (req, res, next) => {
-  res.render('layouts/dashboard');
+// route to landing page
+pageRoutes.get('/', (req, res, next) => {
+  res.render("landing-page");
 });
 
 
+// user dashboard route - after login
+pageRoutes.get('/dashboard', (req, res, next) => {
+  res.render('dashboard');
+});
 
 
 module.exports = pageRoutes;
