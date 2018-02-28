@@ -1,0 +1,89 @@
+* {
+  font-family: "Lucida Console", Monaco, monospace;
+}
+
+body {
+  background-color: #2f2f2f;
+  margin: 0 auto;
+}
+
+.container-fluid {
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+
+.bg-1 {
+  background-color: #2f2f2f;
+  color: #777;
+}
+
+.bg-2 {
+  background-color: #2f2f2f;
+  border-top: 1px solid #777;
+  color: black;
+}
+
+.bg-3 {
+  background-color: #777;
+  color: black;
+}
+
+#study, #code, #shop, #task {
+  color: black;
+}
+
+#features {
+  /* border: 2px solid #2f2f2f; */
+  border-radius: 2px;
+  margin: 0 auto;
+  padding-top: 10px;
+  background-color: #777;
+}
+
+#featuresblocks {
+  padding-left: 2px;
+}
+
+.navbar {
+    background-color: #2f2f2f;
+    color: bisque;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border: 1px solid #2f2f2f;
+    border-bottom: 1px solid #777;
+    border-radius: 0;
+    margin: 0;
+    font-size: 12px;
+    letter-spacing: 4px;
+}
+
+.navbar-nav li a:hover {
+    color: bisque !important;
+}
+
+.navbar-header a:hover {
+  color: bisque !important;
+}
+
+.bg-4 { 
+  background-color: #2f2f2f;
+  border-top: 1px solid #777;
+  color: #777;
+}
+
+.icons {
+  padding-top: 9px;
+}
+
+.copyright {
+  padding-top: 10px;
+}
+
+#hearticon {
+  color: tomato;
+}
+
+#linkedin, #github {
+  color: #777;
+  margin-left: 10px;
+}
