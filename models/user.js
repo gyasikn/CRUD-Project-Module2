@@ -3,8 +3,11 @@ const Schema = mongoose.Schema;
 
 
 const userSchema = new Schema ({
-  username: String, 
-  password: String
+  username  : String,
+  firstname : String,
+  lastname  : String,
+  email     : String,
+  password  : String
 },{
   timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' }
 });
