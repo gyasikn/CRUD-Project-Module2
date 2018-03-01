@@ -41,43 +41,37 @@
 <div class="container-fluid text-center">    
   <div class="row content">
     <div class="col-sm-2 sidenav">
-      <p><a href="#">Save</a></p>
-      <p><a href="#">Update</a></p>
-      <p><a href="#">Delete</a></p>
+      <p><a href="/new">Create New List</a></p>
     </div>
     <div class="col-sm-10 text-left"> 
 
-      <div id="myDIV" class="header">
-        <h2>My List</h2>
-        <input type="text" id="myInput" placeholder="New Task...">
-        <span onclick="newElement()" class="addBtn">Add</span>
-      </div>
-      
-      <ul id="myUL">
-      </ul>
-
-    </div>
-  </div>
-</div>
-
 <div class="list-row row">
-
     <% lists.forEach((list) => { %>
-      
-      <div class="col-sm-3 home-list-box">
+      <div class="col-sm-10 home-list-box">
         <div class="list-info-wrapper">
           <a class="title" href="/lists/<%= list._id %>">
             <strong><%= list.title %></strong>
-            <p>This is the _creator: <%= list._creator %></p>
+            <!-- <p>This is the _creator: <%= list._creator %></p> -->
             <span class="light-text description"><%= list.description %></span>
           </div>
         </div>
       <% }) %>
       </div>
+    </div>
+  </div>
+</div>
 
-<p>hello, <%= user.username %>! </p>
+
+<!-- <p>hello, <%= user.username %>! </p>
 <p>hello,
   <%= user._id %>! </p>
+  <p>This is the creator of lists: <%= lists._creator %></p>
+  <% if (user._id === lists._creator) { %>
+    <p>Pretty please!</p>
+    <% } %>
+  <% if (user._id.equals(lists._creator)) { %>
+    <p>Pretty please!</p>
+  <% } %>  -->
 
 <!-- =============================================================================================== -->
 <!-- FOOTER -->

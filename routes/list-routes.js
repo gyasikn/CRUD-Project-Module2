@@ -58,7 +58,7 @@ router.get('/:id', (req, res, next) => {
 
 
 // display edit list
-router.get('/:id/update', ensureLoggedIn('/login'), (req, res, next) => {
+router.get('/lists/:id/', ensureLoggedIn('/login'), (req, res, next) => {
   List.findById(req.params.id, (err, list) => {
     if (err)       { return next(err) }
     if (!list) { return next(new Error("404")) }
@@ -68,8 +68,8 @@ router.get('/:id/update', ensureLoggedIn('/login'), (req, res, next) => {
 });
 
 
-// handle edit list form submission
-router.post('/:id', ensureLoggedIn('/login'), (req, res, next) => {
+// handle update list form submission
+router.post('/:id/update', ensureLoggedIn('/login'), (req, res, next) => {
   const updates = {
     title: req.body.title,
     description: req.body.description,
