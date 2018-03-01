@@ -15,12 +15,14 @@ const mongoose = require("mongoose");
 const passport = require("passport");
 const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
+
 // database connection
 mongoose.connect("mongodb://localhost:27017/crud-project");
 
 // controllers
 const authRoutes = require("./routes/authentication");
 const pageRoutes = require("./routes/page-routes");
+const listRoutes = require("./routes/list-routes");
 
 const app = express();
 
@@ -118,7 +120,10 @@ passport.use('local-login', new LocalStrategy((username, password, next) => {
 app.use(passport.initialize());
 app.use(passport.session());
 
-
+app.use((req, res, next) => {
+  res.locals.user = req.user;
+  next();
+});
 
 app.use( (req, res, next) => {
   if (typeof(req.user) !== "undefined"){
@@ -139,6 +144,7 @@ app.use( (req, res, next) => {
 // routes
 app.use("/", authRoutes);
 app.use("/", pageRoutes);
+app.use('/', listRoutes);
 
 
 

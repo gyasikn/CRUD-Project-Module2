@@ -3,11 +3,6 @@ const List = require("../models/list");
 const TYPES = require("../models/list-types");
 const router = express.Router();
 const { ensureLoggedIn } = require("connect-ensure-login");
-const {
-  authorizeList,
-  checkOwnership
-} = require("../middleware/list-authorization");
-
 
 
 // route to display form to create new list
@@ -17,8 +12,11 @@ router.get("/new", (req, res) => {
 
 
 // route to handle list submission
-router.post("/", ensureLoggedIn("/login"), (req, res, next) => {
+router.post("/new", (req, res, next) => {
   const newList = new List({
+    // the first title is from the schema
+    // req.body is from body parser
+    // title is from the name attribute in the form
     title: req.body.title,
     description: req.body.description,
     category: req.body.category,
@@ -29,43 +27,49 @@ router.post("/", ensureLoggedIn("/login"), (req, res, next) => {
 
   // Redirect User //
   // We have two possible scenarios for our redirect:
-  // There was an error saving the campaign - Show the user the new campaign form again.
-  // The save succeeded - Redirect them to a campaign show page.
+  // There was an error saving the list - Show the user the new campaign form again.
+  // The save succeeded - Redirect them to a list show page.
 
   newList.save(err => {
     if (err) {
       res.render("lists/new", { list: newList, types: TYPES });
+      console.log(err);
     } else {
-      res.redirect(`/lists/${newList._id}`);
+      res.redirect("/dashboard");
     }
   });
 });
 
 // show individual routes
-router.get('/:id', checkOwnership, (req, res, next) => {
+router.get('/:id', (req, res, next) => {
   List.findById(req.params.id, (err, list) => {
     if (err){ return next(err); }
 
     list.populate('_creator', (err, list) => {
       if (err){ return next(err); }
-      return res.render('list/show', { list });
+      res.locals.user = res.user;
+      return res.render('lists/show', { 
+        list,
+        user: req.user 
+      });
     });
   });
 });
 
 
-// display edit campaign
-router.get('/:id/edit', ensureLoggedIn('/login'), authorizeList, (req, res, next) => {
+// display edit list
+router.get('/:id/update', ensureLoggedIn('/login'), (req, res, next) => {
   List.findById(req.params.id, (err, list) => {
     if (err)       { return next(err) }
     if (!list) { return next(new Error("404")) }
-    return res.render('lists/edit', { list, types: TYPES })
+    return res.render('lists/update', { list, types: TYPES })
+    // res.send("test");
   });
 });
 
 
-// handle edit campaign form submission
-router.post('/:id', ensureLoggedIn('/login'), authorizeList, (req, res, next) => {
+// handle edit list form submission
+router.post('/:id', ensureLoggedIn('/login'), (req, res, next) => {
   const updates = {
     title: req.body.title,
     description: req.body.description,
@@ -74,7 +78,7 @@ router.post('/:id', ensureLoggedIn('/login'), authorizeList, (req, res, next) =>
 
   List.findByIdAndUpdate(req.params.id, updates, (err, list) => {
     if (err) {
-      return res.render('lists/edit', {
+      return res.render('lists/update', {
         list,
         errors: list.errors
       });
@@ -82,7 +86,7 @@ router.post('/:id', ensureLoggedIn('/login'), authorizeList, (req, res, next) =>
     if (!list) {
       return next(new Error('404'));
     }
-    return res.redirect(`/lists/${list._id}`);
+    return res.redirect('/dashboard');
   });
 });
 

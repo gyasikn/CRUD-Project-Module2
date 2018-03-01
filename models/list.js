@@ -5,8 +5,7 @@ const moment = require("moment");
 
 const ListSchema = new Schema({
   title         : { type: String, required: true },
-  description   : { type: String, required: true },
-  category      : { type: String, enum: TYPES, required: true },
+  category      : { type: String, enum: TYPES },
   _creator      : { type: Schema.Types.ObjectId, ref: "User", required: true }
 });
 
@@ -21,7 +20,7 @@ ListSchema.virtual("inputFormattedDate").get(function() {
 });
 
 ListSchema.methods.belongsTo = function(user) {
-  return this._creator.equals(user.id);
+  // return this._creator.equals(user.id);
 };
 
 module.exports = mongoose.model("List", ListSchema);
