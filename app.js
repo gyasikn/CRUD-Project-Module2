@@ -17,7 +17,7 @@ const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
 
 // database connection
-mongoose.connect("mongodb://127.0.0.1/crud-project");
+mongoose.connect("mongodb://localhost:27017/crud-project");
 
 // controllers
 const authRoutes = require("./routes/authentication");
