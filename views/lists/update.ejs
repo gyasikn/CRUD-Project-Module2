@@ -11,22 +11,34 @@
     <title>Current List</title>
   </head>
   <body>
-    <h1>List Name</h1>
+    <h1><%= list.title %></h1>
 
 
-
-      <form action="/:id/update" method="POST">
+      <form action="/<%= list.id %>/update" method="POST">
         <div class="form-group">
           <label for="update-list">Add Tasks</label>
-          <input id="update-list" type="text" name="title" class="form-control" placeholder="Enter New Task...">
+          <input id="update-list" type="text" name="task" class="form-control" placeholder="Enter New Task...">
           <span><button type="submit" class="btn btn-primary">Add</button></span>
         </div>
-      
-        <button type="submit" class="btn btn-primary">Save</button>
-        <button type="submit" class="btn btn-primary">Delete</button>
       </form>
+      <span>
+        <form action="/<%= list.id %>/delete" method="POST">
+          <button type="submit" class="btn btn-primary">Delete</button>
+        </form>
+      </span>
 
-
+      <div>
+        <ul>
+          <% list.tasklist.forEach(listItem => { %>
+            <li>
+              <span>
+                <%= listItem.task %>                
+                <button type="submit" class="btn" formaction="URL">&#10005;</button>
+              </span> 
+            </li>
+          <% }) %>
+        </ul>
+      </div>
 
 
     <!-- Optional JavaScript -->

@@ -38,26 +38,30 @@
 </nav> -->
 <!-- END OF NAV BAR -->
 <!-- =============================================================================================== -->
-<div class="container-fluid text-center">    
+
+<div class="container-fluid text-center">
+
   <div class="row content">
-    <div class="col-sm-2 sidenav">
+
+    <div class="col-sm-4 side-nav">
       <p><a href="/new">Create New List</a></p>
     </div>
-    <div class="col-sm-10 text-left"> 
 
-<div class="list-row row">
-    <% lists.forEach((list) => { %>
-      <div class="col-sm-10 home-list-box">
-        <div class="list-info-wrapper">
-          <a class="title" href="/lists/<%= list._id %>">
-            <strong><%= list.title %></strong>
-            <!-- <p>This is the _creator: <%= list._creator %></p> -->
-            <span class="light-text description"><%= list.description %></span>
+    <div class="col-sm-8 text-left">
+      <div class="list-row row">
+        <% lists.forEach((list) => { %>
+          <div class="col-sm-10 home-list-box">
+            <div class="list-info-wrapper">
+              <a class="title" href="/lists/<%= list._id %>">
+                <strong><%= list.title %></strong>
+                <!-- <p>This is the _creator: <%= list._creator.username %></p> -->
+                <span class="light-text description"><%= list.description %></span>
+            </div>
           </div>
-        </div>
-      <% }) %>
+        <% }) %>
       </div>
     </div>
+
   </div>
 </div>
 
@@ -93,72 +97,3 @@
 
 </body>
 </html>
-
-
-
-
-
-
-<!-- 
-<script>
-
-  // Create a "close" button and append it to each list item
-  var myNodelist = document.getElementsByTagName("LI");
-  var i;
-  for (i = 0; i < myNodelist.length; i++) {
-    var span = document.createElement("SPAN");
-    var txt = document.createTextNode("\u00D7");
-    span.className = "close";
-    span.appendChild(txt);
-    myNodelist[i].appendChild(span);
-  }
-
-  // Click on a close button to hide the current list item
-  var close = document.getElementsByClassName("close");
-  var i;
-  for (i = 0; i < close.length; i++) {
-    close[i].onclick = function () {
-      var div = this.parentElement;
-      div.style.display = "none";
-    };
-  }
-
-  // Add a "checked" symbol when clicking on a list item
-  var list = document.querySelector("ul");
-  list.addEventListener(
-    "click",
-    function (ev) {
-      if (ev.target.tagName === "LI") {
-        ev.target.classList.toggle("checked");
-      }
-    },
-    false
-  );
-
-  // Create a new list item when clicking on the "Add" button
-  function newElement() {
-    var li = document.createElement("li");
-    var inputValue = document.getElementById("myInput").value;
-    var t = document.createTextNode(inputValue);
-    li.appendChild(t);
-    if (inputValue === "") {
-      alert("You must write something!");
-    } else {
-      document.getElementById("myUL").appendChild(li);
-    }
-    document.getElementById("myInput").value = "";
-
-    var span = document.createElement("SPAN");
-    var txt = document.createTextNode("\u00D7");
-    span.className = "close";
-    span.appendChild(txt);
-    li.appendChild(span);
-
-    for (i = 0; i < close.length; i++) {
-      close[i].onclick = function () {
-        var div = this.parentElement;
-        div.style.display = "none";
-      };
-    }
-  }
-</script> -->

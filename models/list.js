@@ -2,12 +2,18 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const TYPES = require("./list-types");
 const moment = require("moment");
+const Task = require('./task')
 
 const ListSchema = new Schema({
+  tasklist      : [ Task.schema ],
   title         : { type: String, required: true },
-  category      : { type: String, enum: TYPES },
   _creator      : { type: Schema.Types.ObjectId, ref: "User", required: true }
 });
+
+
+
+
+
 
 ListSchema.virtual('timeRemaining').get(function () {
   let remaining = moment(this.deadline).fromNow(true).split(' ');
