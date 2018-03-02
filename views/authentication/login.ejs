@@ -4,31 +4,78 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Login</title>
+  <!-- BOOTSTRAP -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <!-- FONT AWESOME -->
+  <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+  <!-- CUSTOM CSS -->
+  <link rel="stylesheet" href="stylesheets/landing-page.css">
+  <title>Log In</title>
 </head>
 <body>
-  <h2>Login</h2>
-
+<!-- NAV BAR -->
+<nav class="navbar navbar-default fixed-top">
   <div class="container">
-    <div class="row">
-      <div class="col-sm-6 centered-form">
-        <form action="/login" method="post">
-          <div class="form-group">
-            <label for="username">Username</label>
-            <input type="text" name="username" class="form-control">
-          </div>
-  
-          <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" name="password" class="form-control">
-          </div>
-  
-          <button type="submit">Login</button>
-        </form>
-      </div>
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span> 
+      </button>
+      <a class="navbar-brand" href="/">DOO-DOO</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/login">Login</a></li>
+        <li><a href="/signup">Sign Up</a></li>
+        <li><a href="/dashboard">Dashboard</a></li>
+        <li><a href="/logout">Logout</a></li>
+      </ul>
     </div>
   </div>
+</nav>
+<!-- END OF NAV BAR -->
 
-  
+<div class="container login-container">
+  <div class="row">
+    <div class="col-sm-6 centered-form">
+      <form action="/login" method="post">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" name="username" class="form-control" placeholder="Username">
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" name="password" class="form-control" placeholder="Password">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Login</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- FOOTER -->
+<!-- <footer class="container-fluid bg-4 text-center footer">
+    <div class="row">
+        <div class="col-sm-4">
+          <h6 class="copyright">&copy; Gyasik Nunez 2018</h6>
+        </div> 
+        <div class="col-sm-4">
+            <h6>Made with <i id="hearticon" class="fas fa-heartbeat fa-2x"></i> at Ironhack</a></h6> 
+        </div>
+        <div class="col-sm-4 icons">
+            <a href="https://github.com/gyasikn" target="_blank"><i id="github" class="fab fa-github fa-2x"></i></a>
+            <a href="https://www.linkedin.com/in/gyasiknunez/" target="_blank"><i id="linkedin" class="fab fa-linkedin fa-2x"></i></a>
+        </div> 
+    </div>
+</footer> -->
+
+
 </body>
 </html>
