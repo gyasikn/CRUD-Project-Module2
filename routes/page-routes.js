@@ -21,5 +21,9 @@ pageRoutes.get('/dashboard', ensureLoggedIn(), (req, res, next) => {
   });
 });
 
+// pageRoutes.get('/logout', (req, res, next) => {
+//   res.render("logout");
+// });
+
 
 module.exports = pageRoutes;
