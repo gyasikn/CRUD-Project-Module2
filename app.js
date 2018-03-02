@@ -17,7 +17,7 @@ const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
 
 // database connection
-mongoose.connect("mongodb://localhost/crud-project");
+mongoose.connect(process.env.MONGODB_URI);
 
 // controllers
 const authRoutes = require("./routes/authentication");
@@ -25,6 +25,8 @@ const pageRoutes = require("./routes/page-routes");
 const listRoutes = require("./routes/list-routes");
 
 const app = express();
+
+require("dotenv").config();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
